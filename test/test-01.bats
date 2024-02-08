@@ -1,10 +1,12 @@
 setup() {
+    load 'test_helper/bats-support/load'
+    load 'test_helper/bats-assert/load'
 	# get the containing directory of this file
 	# use $BATS_TEST_FILENAME instead of ${BASH_SOURCE[0]} or $0,
 	# as those will point to the bats executable's location or the preprocessed file respectively
 	DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )"
 	# make executables in src/ visible to PATH
-	PATH="$DIR/../../src/01:$PATH"
+	PATH="$DIR/../src/01:$PATH"
 }
 
 @test "accepts input from stdin" {
@@ -19,21 +21,18 @@ setup() {
 	1
 	-
 	EOF
-	[ "$status" -eq 0 ]
-	[ "$output" = "2.0" ]
+	assert_output "2.0"
 }
 
 @test "accepts input from a file" {
-	run rpncalc $DIR/input.txt
-	[ "$status" -eq 0 ]
-	[ "$output" = "2.0" ]
+	run rpncalc $DIR/01/input.txt
+	assert_output "2.0"
 }
 
 @test "accepts input from a file and stdin" {
-	run rpncalc $DIR/input.txt - <<-EOF
+	run rpncalc $DIR/01/input.txt - <<-EOF
 	2
 	*
 	EOF
-	[ "$status" -eq 0 ]
-	[ "$output" = "4.0" ]
+	assert_output "4.0"
 }
