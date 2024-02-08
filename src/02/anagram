@@ -1,0 +1,20 @@
+#!/usr/bin/env python3
+
+import string
+import sys
+
+def is_anagram(s, t):
+    if len(s) != len(t):
+        return False
+    if s == t:
+        return True
+
+    for c in string.ascii_lowercase:
+        if s.count(c) != t.count(c):
+            return False
+
+    return True
+
+if __name__ == "__main__":
+    if not is_anagram(sys.argv[1], sys.argv[2]):
+        sys.exit(1)
