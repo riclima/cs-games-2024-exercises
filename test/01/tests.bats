@@ -30,7 +30,7 @@ setup() {
 }
 
 @test "accepts input from a file and stdin" {
-	run rpncalc $DIR/input.txt <<-EOF
+	run rpncalc $DIR/input.txt - <<-EOF
 	2
 	*
 	EOF
