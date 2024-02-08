@@ -8,7 +8,7 @@ setup() {
 }
 
 @test "anagram anagram nagaram" {
-    run anagram anagaram nagaram
+    run anagram anagram nagaram
     [ "$status" -eq 0 ]
 }
 
