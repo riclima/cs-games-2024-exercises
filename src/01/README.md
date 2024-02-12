@@ -6,7 +6,7 @@ Cette calculatrice doit accepter comme entrée des floats et les opérations `+`
 
 Le binaire doit être appélée `rpncalc`.
 
-Pour l'entrée, elle doit accepter des opérations passées par `stdin`, en donnant le nom de plusieurs fichiers comme argument, ET `stdin` et fichiers comme argument dans un seul appel (il doit procésser `stdin` en premier):
+Pour l'entrée, elle doit accepter des opérations passées par `stdin`, en donnant le nom de plusieurs fichiers comme argument, ET `stdin` et fichiers comme argument dans un seul appel (en passant `-` pour répresenter `stdin`):
 
 Exemples:
 
@@ -32,7 +32,7 @@ $ rpncalc input.txt
 $ cat input.txt
 2
 *
-$ rpncalc input.txt <<EOF
+$ rpncalc - input.txt <<EOF
 1
 2
 +
